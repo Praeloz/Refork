@@ -154,7 +154,7 @@ function Generation:GetSwaps()
 end
 
 function Generation:PickVariableName(): string
-	local Names = Config.VariableNames
+	local Names = Config and Config.VariableNames or {"Argument"}
 	return Names[math.random(1, #Names)]
 end
 

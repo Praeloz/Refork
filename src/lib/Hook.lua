@@ -116,7 +116,7 @@ function Hook:HookMetaMethod(Object: Instance, Call: string, Callback: MetaFunc)
 	local Func = newcclosure(Callback)
 	
 	--// Getrawmetatable
-	if Config.ReplaceMetaCallFunc then
+	if Config and Config.ReplaceMetaCallFunc then
 		return self:ReplaceMetaMethod(Object, Call, Func)
 	end
 	
@@ -129,7 +129,7 @@ end
 --// By the way, thanks for copying this guys! Super appreciate the copycat
 function Hook:PatchFunctions()
 	--// Check if this function is disabled in the configuration
-	if Config.NoFunctionPatching then return end
+	if Config and Config.NoFunctionPatching then return end
 
 	local Patches = {
 		--// Error detection patch
@@ -398,8 +398,8 @@ function Hook:LoadMetaHooks(ActorCode: string, ChannelId: number)
 end
 
 function Hook:LoadReceiveHooks()
-	local NoReceiveHooking = Config.NoReceiveHooking
-	local BlackListedServices = Config.BlackListedServices
+	local NoReceiveHooking = Config and Config.NoReceiveHooking or false
+	local BlackListedServices = Config and Config.BlackListedServices or {}
 
 	if NoReceiveHooking then return end
 

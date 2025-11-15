@@ -350,7 +350,7 @@ end
 
 function Process:Decompile(Script: LocalScript | ModuleScript): string
     local KonstantAPI = "http://api.plusgiant5.com/konstant/decompile"
-    local ForceKonstant = Config.ForceKonstantDecompiler
+    local ForceKonstant = Config and Config.ForceKonstantDecompiler or false
 
     --// Use built-in decompiler if the executor supports it
     if decompile and not ForceKonstant then 

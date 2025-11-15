@@ -165,7 +165,7 @@ function Ui:FontWasSuccessful()
 end
 
 function Ui:LoadReGui()
-	local ThemeConfig = Config.ThemeConfig
+	local ThemeConfig = Config and Config.ThemeConfig or {BaseTheme = "ImGui", TextSize = 12}
 	ThemeConfig.TextFont = TextFont
 
 	--// ReGui
@@ -449,7 +449,7 @@ function Ui:CreateWindowContent(Window)
 	self:MakeEditorTab(InfoSelector)
 	self:MakeOptionsTab(InfoSelector)
 	
-	if Config.Debug then
+	if Config and Config.Debug then
 		self:ConsoleTab(InfoSelector)
 	end
 end
@@ -601,7 +601,7 @@ end
 
 function Ui:MakeEditorTab(InfoSelector)
 	local Default = self.DefaultEditorContent
-	local SyntaxColors = Config.SyntaxColors
+	local SyntaxColors = Config and Config.SyntaxColors or {}
 
 	--// Create tab
 	local EditorTab = InfoSelector:CreateTab({
@@ -688,7 +688,7 @@ end
 function Ui:MakeEditorPopoutWindow(Content: string, WindowConfig: table)
 	local Window = self:CreateWindow(WindowConfig)
 	local Buttons = WindowConfig.Buttons or {}
-	local Colors = Config.SyntaxColors
+	local Colors = Config and Config.SyntaxColors or {}
 
 	local CodeEditor = Window:CodeEditor({
 		Text = Content,
@@ -1374,7 +1374,8 @@ function Ui:CreateLog(Data: Log)
 	Data.ValueSwaps = Generation:MakeValueSwapsTable(Timestamp)
 
 	--// Generate log title
-	local Color = Config.MethodColors[Method:lower()]
+	local MethodColors = Config and Config.MethodColors or {}
+	local Color = MethodColors[Method:lower()]
 	local Text = NoTreeNodes and `{Remote} | {Method}` or Method
 
 	--// FindStringForName check
