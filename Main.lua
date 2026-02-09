@@ -27,7 +27,7 @@
 ]]
 
 local a={UseWorkspace=false,NoActors=false,FolderName='Sigma Spy',RepoUrl=
-'https://github.com/Praeloz/Refork',ParserUrl=
+'https://github.com/Praeloz/Refork/main',ParserUrl=
 [[https://raw.githubusercontent.com/depthso/Roblox-parser/refs/heads/main/dist/Main.luau]]
 }print[[[Sigma Spy] v12.0.1 by depso - Reupload & Bug Fixes by Dexz00]]local b={
 ...}local c=b[1]if typeof(c)=='table'then for d,e in c do a[d]=e end end local d
