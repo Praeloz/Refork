@@ -74,7 +74,7 @@ type Log = {
 local SetClipboard = setclipboard or toclipboard or set_clipboard
 
 --// Libraries
-local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/catblox1346/Dear-ReGui/main/ReGui.lua'), "ReGui")()
+local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/catblox1346/Dear-ReGui/main/ReGui.lua'))()
 
 --// Modules
 local Flags
